@@ -5,7 +5,7 @@ let sequelize;
 
 if (!sequelize) {
     console.log('creating db connection');
-    sequelize = new Sequelize(env.DATABASE, env.USERNAME, env.PASSWORD);
+    sequelize = new Sequelize(env.DATABASE, env.USER, env.PASS);
 }
 
 module.exports = (function() {

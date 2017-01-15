@@ -1,13 +1,13 @@
 var gulp = require('gulp');
 var shell = require('gulp-shell');
 var env = require('./.env');
-var NODE_BIN = 'node_modules/.bin/';
-var MODELS_PATH = './db/models/_models';
+var MODELS_PATH = `${env.MODEL_DIR}/_models`;
 var fs = require('fs');
 
 gulp.task('autoModel', shell.task([
         [
-            `${NODE_BIN}sequelize-auto`,
+            'mkdir -p env.MODEL_DIR &&',
+            `${env.NODE_MODULES_BIN}/sequelize-auto`,
             `--host ${env.HOST}` ,
             `--port ${env.PORT}`,
             `--user ${env.USER}`,

@@ -6,8 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "node_modules/.bin/sequelize db:migrate",
+    "createModels": "npm run autoModel && npm run createModelLinks",
     "autoModel": "gulp autoModel",
-    "createMigration": "node db/scripts/createNewMigration"
+    "createMigration": "node db/scripts/createNewMigration",
+    "initDB": "node db/scripts/initDB",
+    "init": "npm run initDB && npm run migrate && npm run createModels",
+    "createModelLinks" : "node db/scripts/createModelLinks"
   },
   "author": "",
   "license": "ISC",

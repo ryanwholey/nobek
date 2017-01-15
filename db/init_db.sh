@@ -1,1 +1,0 @@
-mysql -u root <<< 'CREATE DATABASE IF NOT EXISTS trabek_db;'

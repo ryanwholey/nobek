@@ -4,3 +4,4 @@ node_modules
 npm-debug.log
 **/npm-debug.log
 db/config/config.json
+db/models/_models/*

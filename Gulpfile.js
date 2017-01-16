@@ -1,8 +1,9 @@
-var gulp = require('gulp');
-var shell = require('gulp-shell');
-var env = require('./.env');
-var MODELS_PATH = `${env.MODEL_DIR}/_models`;
-var fs = require('fs');
+const env = require('./.env');
+const gulp = require('gulp');
+const jasmine = require('gulp-jasmine');
+const shell = require('gulp-shell');
+
+const MODELS_PATH = `${env.MODEL_DIR}/_models`;
 
 gulp.task('autoModel', shell.task([
         [
@@ -17,5 +18,11 @@ gulp.task('autoModel', shell.task([
             '--dialect mysql',
             '--camel'
         ].join(' ')
-    ]));
+    ])
+);
+
+gulp.task('testDB', () => {
+    return gulp.src('db/tests/**/*spec.js')
+        .pipe(jasmine());
+});
 

@@ -1,5 +1,6 @@
 const env = require('../../.env');
 const fs = require('fs');
+const path = require('path');
 
 const _modelDir = `${env.MODEL_DIR}/_models`;
 const ignoreFiles = {
@@ -19,15 +20,16 @@ function getFileContents(fileNameObj) {
     const exportName = fileNameObj.new.split('.').shift();
 
     const contents = [
-        `let ${exportName};`,
+        '// THIS FILE HAS BEEN GENERATED',
+        `var ${exportName};`,
         'try {',
-            `\t${exportName} = require("./_models/${original}");`,
+            `\t${exportName} = require("${path.resolve(env.MODEL_DIR, '_models', original)}");`,
         '} catch(e) {',
             '\tconsole.log("no models in _models found, try running npm run autoModel");',
             '\tprocess.exit(1);',
         '}',
-        'const db = require("../db");',
-        'const Sequelize = require("sequelize");',
+        'var db = require("../db");',
+        'var Sequelize = require("sequelize");',
         `module.exports = ${exportName}(db, Sequelize);`
     ].join('\n');
     

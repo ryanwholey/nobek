@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "",
+    "start": "nodemon server/server",
     "migrate": "node_modules/.bin/sequelize db:migrate",
     "createModels": "npm run autoModel && npm run createModelLinks",
     "autoModel": "gulp autoModel",
@@ -20,8 +21,9 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.4.7",
-    "express": "^4.14.0",
     "mysql": "^2.12.0",
+    "restify": "^4.3.0",
+    "restify-errors": "^4.3.0",
     "sequelize": "^3.29.0"
   },
   "devDependencies": {
@@ -29,7 +31,9 @@
     "gulp-jasmine": "^2.4.2",
     "gulp-shell": "^0.5.2",
     "jasmine": "^2.5.3",
+    "nodemon": "^1.11.0",
     "phantom": "^4.0.0",
+    "sequelize-auto": "^0.4.18",
     "sequelize-cli": "^2.5.1",
     "umzug": "^1.11.0"
   }

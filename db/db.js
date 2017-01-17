@@ -12,7 +12,15 @@ let sequelize;
 if (!sequelize) {
     timeLog('creating db connection');
     let args = config[process.env.NODE_ENV] || config.dev;
-    let options = {}
+    let options = {
+        define: {
+            defaultScope: {
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt'] 
+                } 
+            } 
+        } 
+    }
     if (process.env.NODE_ENV === 'test') {
         options.logging = false;
     }

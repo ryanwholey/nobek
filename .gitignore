@@ -7,3 +7,5 @@ db/config/config.json
 db/models/**/*
 **/*.swp
 .env.js
+server/.serverCert
+server/.serverKey

@@ -7,7 +7,7 @@ const MODELS_PATH = `${env.MODEL_DIR}/_models`;
 
 gulp.task('autoModel', shell.task([
         [
-            'mkdir -p env.MODEL_DIR &&',
+            `mkdir -p ${env.MODEL_DIR} &&`,
             `${env.NODE_MODULES_BIN}/sequelize-auto`,
             `--host ${env.HOST}` ,
             `--port ${env.PORT}`,

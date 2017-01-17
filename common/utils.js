@@ -30,7 +30,13 @@ function nodePromise(func, cmd) {
     });
 }
 
+function logError() {
+    let args = Array.prototype.slice.call(arguments).join(' ');
+    timeLog(`Error: ${args}`);
+}
+
 module.exports = {
     timeLog,
-    nodePromise
+    nodePromise,
+    logError
 }

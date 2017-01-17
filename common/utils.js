@@ -13,6 +13,24 @@ const timeLog = (string) => {
     console.log(`[${hours}:${minutes}:${seconds}] ${string}`);
 }
 
+function nodePromise(func, cmd) {
+    let args = Array.prototype.slice.call(arguments, 1);
+
+    return new Promise((resolve, reject) => {
+        let handler = (err, success, stderr) => {
+            if (err) {
+                timeLog(success);
+                timeLog(stderr);
+                reject(err);
+            } 
+            resolve(success);
+        }
+        args.push(handler);
+        func.apply(this, args);
+    });
+}
+
 module.exports = {
-    timeLog
+    timeLog,
+    nodePromise
 }
